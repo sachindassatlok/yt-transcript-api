@@ -5,17 +5,21 @@ app = FastAPI()
 
 @app.get("/")
 def home():
-    return {"status": "working"}
+return {"status": "working"}
 
 @app.get("/transcript/{video_id}")
 def transcript(video_id: str):
 
-    data = YouTubeTranscriptApi.get_transcript(video_id)
+```
+api = YouTubeTranscriptApi()
 
-    text = " ".join(
-        item["text"] for item in data
-    )
+data = api.fetch(video_id)
 
-    return {
-        "transcript": text
-    }
+text = " ".join(
+    item.text for item in data
+)
+
+return {
+    "transcript": text
+}
+```
