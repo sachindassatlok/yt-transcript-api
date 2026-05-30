@@ -9,10 +9,9 @@ return {"status": "working"}
 
 @app.get("/transcript/{video_id}")
 def transcript(video_id: str):
-
-```
 api = YouTubeTranscriptApi()
 
+```
 data = api.fetch(video_id)
 
 text = " ".join(
